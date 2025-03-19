@@ -9,5 +9,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface CreditoRepository extends JpaRepository<Credito, Long> {
     List<Credito> findByNumeroNfse(String numeroNfse);
+
     Optional<Credito> findByNumeroCredito(String numeroCredito);
 }
