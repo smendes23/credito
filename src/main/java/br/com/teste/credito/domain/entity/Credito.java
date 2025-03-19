@@ -1,4 +1,4 @@
-package br.com.teste.credito.domain;
+package br.com.teste.credito.domain.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
