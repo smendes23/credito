@@ -21,7 +21,9 @@ public class CreditoServiceImpl implements CreditoService {
     }
 
     @Override
-    public List<CreditoDto> buscarPorNfse(String numeroNfse) {
+    public List<CreditoDto> buscarPorNfse(final String numeroNfse) {
+        log.debug("[CreditoServiceImpl] realizando a consulta de creditos pela NFE:{} ", numeroNfse);
+
         return repository.findByNumeroNfse(numeroNfse).stream()
                 .map(CreditoConverter::toDto)
                 .collect(Collectors.collectingAndThen(Collectors.toList(), listaCreditos -> {
@@ -33,7 +35,9 @@ public class CreditoServiceImpl implements CreditoService {
     }
 
     @Override
-    public CreditoDto buscarPorNumeroCredito(String numeroCredito) {
+    public CreditoDto buscarPorNumeroCredito(final String numeroCredito) {
+        log.debug("[CreditoServiceImpl] realizando a consulta de credito pelo numeroCredito:{} ", numeroCredito);
+
         return repository.findByNumeroCredito(numeroCredito)
                 .map(CreditoConverter::toDto)
                 .orElseThrow(() -> new NotFoundException("Credito não encontrado!"));
