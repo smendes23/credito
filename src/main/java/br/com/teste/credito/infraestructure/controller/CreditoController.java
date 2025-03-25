@@ -5,6 +5,7 @@ import br.com.teste.credito.infraestructure.controller.dto.CreditoResponse;
 import br.com.teste.credito.infraestructure.controller.mapper.CreditoMapper;
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +22,7 @@ public class CreditoController {
         this.service = service;
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/{numeroNfse}")
     public List<CreditoResponse> consultarPorNfse(@PathVariable String numeroNfse) {
         log.info("Consultando uma lista de creditos pela NFSE: {}", numeroNfse);
@@ -29,6 +31,7 @@ public class CreditoController {
                 .stream().map(CreditoMapper::toResponse).toList();
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/{numeroCredito}/credito")
     public CreditoResponse consultarPorNumeroCredito(@PathVariable String numeroCredito) {
         log.info("Consulta de credito pelo numeroCredito: {}", numeroCredito);
